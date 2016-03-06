@@ -86,6 +86,7 @@ paste("5-minute interval with maximum number of steps is ", maxSteps$interval, "
 ```
 
 ## Imputing missing values
+I chose to impute the missing values with the average per interval computed earlier in this report.
 
 ```r
 paste("Number of missing values is ", sum(is.na(actData$steps)))
@@ -97,7 +98,7 @@ paste("Number of missing values is ", sum(is.na(actData$steps)))
 
 ```r
 actData2<-merge(actData, stepsInterval, by = "interval")
-actData2$steps.x[is.na(actData2$steps.x)]<-actData2$steps.y[is.na(actData2$steps.x)]
+actData2$steps.x[is.na(actData2$steps.x)]<-actData2$steps.y[is.na(actData2$steps.x)]     # Missing values are imputed
 actData2<-actData2[,1:3]
 names(actData2)[names(actData2) == 'steps.x'] <- 'steps'
 
